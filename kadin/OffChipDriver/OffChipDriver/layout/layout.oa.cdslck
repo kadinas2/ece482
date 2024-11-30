@@ -1,0 +1,16 @@
+#
+# Edit Lock-Stake file. CAUTION: Please do not change.
+#
+# Information about current Edit Lock Owner.
+#
+LockStakeVersion               1.1
+LoginName                      kadinas2
+HostName                       fastx3-25.ews.illinois.edu
+ProcessIdentifier              79113
+ProcessCreationTime_UTC        1732907861
+ProcessCreationTime_Readable   Fri Nov 29 13:17:41 2024 CST
+AppIdentifier                  OA File System Design Manager
+OSType                         unix
+ReasonForPlacingEditLock       OpenAccess edit lock
+FilePathUsedToEditLock         /home/kadinas2/ece482.work/gpdk045/OffChipDriver/OffChipDriver/layout/layout.oa.cdslck
+TimeEditLocked                 Fri Nov 29 13:40:06 2024 CST
