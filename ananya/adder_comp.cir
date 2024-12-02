@@ -1,0 +1,102 @@
+** Generated for: hspiceD
+** Generated on: Dec  2 01:02:00 2024
+** Design library name: final_project
+** Design cell name: Adder_Comp
+** Design view name: schematic
+
+
+.TEMP 25.0
+.OPTION
++    ARTIST=2
++    INGOLD=2
++    PARHIER=LOCAL
++    PSF=2
+
+** Library name: final_project
+** Cell name: ptl_Xor
+** View name: schematic
+.subckt ptl_Xor a b bnot out vdd vss
+mnm1 out a bnot vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
+mnm0 a bnot out vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
+mpm1 out a b vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
+mpm0 a b out vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
+.ends ptl_Xor
+** End of subcircuit definition.
+
+** Library name: final_project
+** Cell name: inv_n120
+** View name: schematic
+.subckt inv_n120 d q vdd vss
+mpm0 q d vdd vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
+mnm0 q d vss vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
+.ends inv_n120
+** End of subcircuit definition.
+
+** Library name: final_project
+** Cell name: XOR
+** View name: schematic
+.subckt XOR a b out vdd vss
+xi0 a b net1 out vdd vss ptl_Xor
+xi1 b net1 vdd vss inv_n120
+.ends XOR
+** End of subcircuit definition.
+
+** Library name: final_project
+** Cell name: AND
+** View name: schematic
+.subckt AND a b bnot out vdd vss
+mnm1 out bnot vss vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
+mnm0 a b out vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
+mpm0 out bnot a vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
+.ends AND
+** End of subcircuit definition.
+
+** Library name: final_project
+** Cell name: HalfAdder
+** View name: schematic
+.subckt HalfAdder a b cout s vdd vss
+xi0 a b net1 cout vdd vss AND
+xi1 a b net1 s vdd vss ptl_Xor
+xi2 b net1 vdd vss inv_n120
+.ends HalfAdder
+** End of subcircuit definition.
+
+** Library name: final_project
+** Cell name: CoutLogic
+** View name: schematic
+.subckt CoutLogic a coutnot cin p pnot vdd vss
+mpm3 coutnot p net3 vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
+mpm2 net3 a vdd vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
+mpm1 coutnot cin net2 vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
+mpm0 net2 pnot vdd vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
+mnm3 net4 a vss vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
+mnm2 coutnot pnot net4 vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
+mnm1 net1 p vss vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
+mnm0 coutnot cin net1 vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
+.ends CoutLogic
+** End of subcircuit definition.
+
+** Library name: final_project
+** Cell name: FullAdder
+** View name: schematic
+.subckt FullAdder a b cin cout s vdd vss
+xi1 cin net1 s vdd vss XOR
+xi0 a b net1 vdd vss XOR
+xi3 net3 cout vdd vss inv_n120
+xi2 net1 net2 vdd vss inv_n120
+xi4 a net3 cin net1 net2 vdd vss CoutLogic
+.ends FullAdder
+** End of subcircuit definition.
+
+** Library name: final_project
+** Cell name: Adder_Comp
+** View name: schematic
+xi3 x3 y3 net3 vdd vss XOR
+xi2 x2 y2 net4 vdd vss XOR
+xi1 x1 y1 net2 vdd vss XOR
+xi0 x0 y0 net1 vdd vss XOR
+xi6 net5 net6 net9 r0 vdd vss HalfAdder
+xi5 net3 net4 net8 net6 vdd vss HalfAdder
+xi4 net1 net2 net10 net5 vdd vss HalfAdder
+xi7 net8 net10 net9 r2 r1 vdd vss FullAdder
+.END
