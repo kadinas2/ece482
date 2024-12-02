@@ -1,9 +1,8 @@
 ** Generated for: hspiceD
-** Generated on: Dec  2 01:02:00 2024
+** Generated on: Dec 2, 2024
 ** Design library name: final_project
 ** Design cell name: Adder_Comp
 ** Design view name: schematic
-
 
 .TEMP 25.0
 .OPTION
@@ -12,58 +11,44 @@
 +    PARHIER=LOCAL
 +    PSF=2
 
-** Library name: final_project
-** Cell name: ptl_Xor
-** View name: schematic
+** Subcircuit Definitions
+
+** Pass-Transistor Logic XOR Gate
 .subckt ptl_Xor a b bnot out vdd vss
 mnm1 out a bnot vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
 mnm0 a bnot out vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
 mpm1 out a b vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
 mpm0 a b out vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
 .ends ptl_Xor
-** End of subcircuit definition.
 
-** Library name: final_project
-** Cell name: inv_n120
-** View name: schematic
+** Inverter
 .subckt inv_n120 d q vdd vss
 mpm0 q d vdd vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
 mnm0 q d vss vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
 .ends inv_n120
-** End of subcircuit definition.
 
-** Library name: final_project
-** Cell name: XOR
-** View name: schematic
+** XOR Gate
 .subckt XOR a b out vdd vss
 xi0 a b net1 out vdd vss ptl_Xor
 xi1 b net1 vdd vss inv_n120
 .ends XOR
-** End of subcircuit definition.
 
-** Library name: final_project
-** Cell name: AND
-** View name: schematic
+** AND
+** AND Gate
 .subckt AND a b bnot out vdd vss
 mnm1 out bnot vss vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
 mnm0 a b out vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
 mpm0 out bnot a vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
 .ends AND
-** End of subcircuit definition.
 
-** Library name: final_project
-** Cell name: HalfAdder
-** View name: schematic
+** Half Adder
 .subckt HalfAdder a b cout s vdd vss
 xi0 a b net1 cout vdd vss AND
 xi1 a b net1 s vdd vss ptl_Xor
 xi2 b net1 vdd vss inv_n120
 .ends HalfAdder
-** End of subcircuit definition.
 
-** Library name: final_project
-** Cell name: CoutLogic
-** View name: schematic
+** Cout Logic
 .subckt CoutLogic a coutnot cin p pnot vdd vss
 mpm3 coutnot p net3 vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
 mpm2 net3 a vdd vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
@@ -74,11 +59,8 @@ mnm2 coutnot pnot net4 vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=
 mnm1 net1 p vss vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
 mnm0 coutnot cin net1 vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
 .ends CoutLogic
-** End of subcircuit definition.
 
-** Library name: final_project
-** Cell name: FullAdder
-** View name: schematic
+** Full Adder
 .subckt FullAdder a b cin cout s vdd vss
 xi1 cin net1 s vdd vss XOR
 xi0 a b net1 vdd vss XOR
@@ -86,11 +68,9 @@ xi3 net3 cout vdd vss inv_n120
 xi2 net1 net2 vdd vss inv_n120
 xi4 a net3 cin net1 net2 vdd vss CoutLogic
 .ends FullAdder
-** End of subcircuit definition.
 
-** Library name: final_project
-** Cell name: Adder_Comp
-** View name: schematic
+** Adder_Comp
+.subckt Adder_Comp x0 x1 x2 x3 y0 y1 y2 y3 r0 r1 r2 vdd vss
 xi3 x3 y3 net3 vdd vss XOR
 xi2 x2 y2 net4 vdd vss XOR
 xi1 x1 y1 net2 vdd vss XOR
@@ -99,50 +79,97 @@ xi6 net5 net6 net9 r0 vdd vss HalfAdder
 xi5 net3 net4 net8 net6 vdd vss HalfAdder
 xi4 net1 net2 net10 net5 vdd vss HalfAdder
 xi7 net8 net10 net9 r2 r1 vdd vss FullAdder
-.END
+.ends Adder_Comp
 
-
-
-project testbench
+** Testbench
 .lib '/class/ece482/gpdk045_mos' TT
 
-$The following parameter can be modified.
+** Simulation parameters
 .param TCK = 0.4167n
-
-$The following parameters cannot be modified.
 .param trf_ck = 5p
-.param trf_ip_reset = 50p
 .param CK_pw = 0.5*TCK
+.param sim_end = 50*TCK
+.param trf_ip_reset = 50p
 .param reset_delay = 0
 .param reset_delay2 = 25*TCK
 .param reset_pw = 0.9n
 .param reset_pw2 = 3n
-.param sim_end = 50*TCK
 .param input_delay = 0.5n
 .param input_pw = 4*TCK
 
-$Clock Buffer - You will clk_out as your clock signal
-mnm1 clk_out net10 vss vss g45n1svt L=45e-9 W=960e-9 AD=134.4e-15 AS=134.4e-15 PD=2.2e-6 PS=2.2e-6 NRD=145.833e-3 NRS=145.833e-3 M=1
-mnm0 net10 CK vss vss g45n1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
-mpm1 clk_out net10 vdd vdd g45p1svt L=45e-9 W=1.92e-6 AD=268.8e-15 AS=268.8e-15 PD=4.12e-6 PS=4.12e-6 NRD=72.9167e-3 NRS=72.9167e-3 M=1
-mpm0 net10 CK vdd vdd g45p1svt L=45e-9 W=480e-9 AD=67.2e-15 AS=67.2e-15 PD=1.24e-6 PS=1.24e-6 NRD=291.667e-3 NRS=291.667e-3 M=1
+** Clock signals
+vCK CK 0 pulse(0 1.1 0 5p 5p 0.5*TCK TCK)
 
-vX3 x3 0 PWL(0 0 'input_delay+0*trf_ip_reset+0*input_pw' 0 'input_delay+1*trf_ip_reset+0*input_pw' 1.1 'input_delay+1*trf_ip_reset+1*input_pw' 1.1 'input_delay+2*trf_ip_reset+1*input_pw' 0 'input_delay+2*trf_ip_reset+2*input_pw' 0 'input_delay+3*trf_ip_reset+2*input_pw' 1.1 'input_delay+3*trf_ip_reset+3*input_pw' 1.1  'input_delay+4*trf_ip_reset+3*input_pw' 0 'input_delay+4*trf_ip_reset+4*input_pw' 0 sim_end 0)
-vX2 x2 0 PWL(0 0 'input_delay+0*trf_ip_reset+0*input_pw' 0 'input_delay+1*trf_ip_reset+0*input_pw' 1.1 'input_delay+1*trf_ip_reset+1*input_pw' 1.1 'input_delay+2*trf_ip_reset+1*input_pw' 1.1 'input_delay+2*trf_ip_reset+2*input_pw' 1.1 'input_delay+3*trf_ip_reset+2*input_pw' 1.1 'input_delay+3*trf_ip_reset+3*input_pw' 1.1  'input_delay+4*trf_ip_reset+3*input_pw' 0 'input_delay+4*trf_ip_reset+4*input_pw' 0 sim_end 0)
-vX1 x1 0 PWL(0 0 'input_delay+0*trf_ip_reset+0*input_pw' 0 'input_delay+1*trf_ip_reset+0*input_pw' 0 'input_delay+1*trf_ip_reset+1*input_pw' 0 'input_delay+2*trf_ip_reset+1*input_pw' 1.1 'input_delay+2*trf_ip_reset+2*input_pw' 1.1 'input_delay+3*trf_ip_reset+2*input_pw' 0 'input_delay+3*trf_ip_reset+3*input_pw' 0  'input_delay+4*trf_ip_reset+3*input_pw' 0 'input_delay+4*trf_ip_reset+4*input_pw' 0 sim_end 0)
-vX0 x0 0 PWL(0 0 'input_delay+0*trf_ip_reset+0*input_pw' 0 'input_delay+1*trf_ip_reset+0*input_pw' 1.1 'input_delay+1*trf_ip_reset+1*input_pw' 1.1 'input_delay+2*trf_ip_reset+1*input_pw' 0 'input_delay+2*trf_ip_reset+2*input_pw' 0 'input_delay+3*trf_ip_reset+2*input_pw' 0 'input_delay+3*trf_ip_reset+3*input_pw' 0  'input_delay+4*trf_ip_reset+3*input_pw' 1.1 'input_delay+4*trf_ip_reset+4*input_pw' 1.1 sim_end 1.1)
-vY3 y3 0 PWL(0 0 'input_delay+0*trf_ip_reset+0*input_pw' 0 'input_delay+1*trf_ip_reset+0*input_pw' 0 'input_delay+1*trf_ip_reset+1*input_pw' 0 'input_delay+2*trf_ip_reset+1*input_pw' 0 'input_delay+2*trf_ip_reset+2*input_pw' 0 'input_delay+3*trf_ip_reset+2*input_pw' 1.1 'input_delay+3*trf_ip_reset+3*input_pw' 1.1  'input_delay+4*trf_ip_reset+3*input_pw' 1.1 'input_delay+4*trf_ip_reset+4*input_pw' 1.1 sim_end 1.1)
-vY2 y2 0 PWL(0 0 'input_delay+0*trf_ip_reset+0*input_pw' 0 'input_delay+1*trf_ip_reset+0*input_pw' 1.1 sim_end 1.1)
-vY1 y1 0 PWL(0 0 'input_delay+0*trf_ip_reset+0*input_pw' 0 'input_delay+1*trf_ip_reset+0*input_pw' 1.1 'input_delay+1*trf_ip_reset+1*input_pw' 1.1 'input_delay+2*trf_ip_reset+1*input_pw' 1.1 'input_delay+2*trf_ip_reset+2*input_pw' 1.1 'input_delay+3*trf_ip_reset+2*input_pw' 0 'input_delay+3*trf_ip_reset+3*input_pw' 0 'input_delay+4*trf_ip_reset+3*input_pw' 0 'input_delay+4*trf_ip_reset+4*input_pw' 0 sim_end 0)
-vY0 y0 0 PWL(0 0 sim_end 0)
+** Input signals
+** X Inputs: Binary sequences with specific delays
+vX3 x3 0 PWL(
++   0 0
++   input_delay 0
++   input_delay+input_pw 1.1
++   input_delay+2*input_pw 0
++   input_delay+3*input_pw 1.1
++   sim_end 0)
 
-vCK CK 0 pulse(0 1.1 trf_ck trf_ck trf_ck CK_pw TCK)
-vReset reset 0 PWL(0 1.1 reset_delay 1.1 'reset_delay+trf_ip_reset' 1.1 'reset_delay+reset_pw+trf_ip_reset' 1.1 'reset_delay+reset_pw+2*trf_ip_reset' 0 'reset_delay+reset_pw+2*trf_ip_reset+reset_delay2' 0 'reset_delay+reset_pw+3*trf_ip_reset+reset_delay2' 1.1 'reset_delay+reset_pw+reset_pw2+3*trf_ip_reset+reset_delay2' 1.1 'reset_delay+reset_pw+reset_pw2+4*trf_ip_reset+reset_delay2' 0 sim_end 0)
+vX2 x2 0 PWL(
++   0 0
++   input_delay 0
++   input_delay+input_pw 1.1
++   input_delay+2*input_pw 1.1
++   input_delay+3*input_pw 0
++   sim_end 0)
 
-vVDDIO VDDIO 0 1.8
+vX1 x1 0 PWL(
++   0 0
++   input_delay 0
++   input_delay+input_pw 0
++   input_delay+2*input_pw 1.1
++   input_delay+3*input_pw 0
++   sim_end 0)
+
+vX0 x0 0 PWL(
++   0 0
++   input_delay 0
++   input_delay+input_pw 1.1
++   input_delay+2*input_pw 0
++   input_delay+3*input_pw 0
++   sim_end 1.1)
+
+** Y Inputs: Binary sequences with specific delays
+vY3 y3 0 PWL(
++   0 0
++   input_delay 0
++   input_delay+input_pw 0
++   input_delay+2*input_pw 0
++   input_delay+3*input_pw 1.1
++   sim_end 1.1)
+
+vY2 y2 0 PWL(
++   0 0
++   input_delay 0
++   input_delay+input_pw 1.1
++   sim_end 1.1)
+
+vY1 y1 0 PWL(
++   0 0
++   input_delay 0
++   input_delay+input_pw 1.1
++   input_delay+2*input_pw 1.1
++   input_delay+3*input_pw 0
++   sim_end 0)
+
+vY0 y0 0 PWL(
++   0 0
++   sim_end 0)
+
+
+** Power supplies
 vVDD VDD 0 1.1
 vVSS VSS 0 0
 
+** Circuit instantiation
+xi0 x0 x1 x2 x3 y0 y1 y2 y3 r0 r1 r2 VDD VSS Adder_Comp
+
+** Transient analysis
 .tran 0 sim_end
 
 .option post
