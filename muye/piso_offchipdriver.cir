@@ -1,0 +1,472 @@
+Offchip driver test circuit
+.lib '/class/ece482/gpdk045_mos' TT
+
+$The following parameter can be modified.
+.param TCK = 0.4167n
+
+$The following parameters cannot be modified.
+.param trf_ck = 5p
+.param trf_ip_reset = 50p
+.param CK_pw = 0.5*TCK
+.param reset_delay = 0
+.param reset_delay2 = 25*TCK
+.param reset_pw = 0.9n
+.param reset_pw2 = 3n
+.param sim_end = 50*TCK
+.param input_delay = 0.5n
+.param input_pw = 4*TCK
+
+$Clock Buffer - You will clk_out as your clock signal
+mnm1 clk_out net10 vss vss g45n1svt L=45e-9 W=960e-9 AD=134.4e-15 AS=134.4e-15 PD=2.2e-6 PS=2.2e-6 NRD=145.833e-3 NRS=145.833e-3 M=1
+mnm0 net10 CK vss vss g45n1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
+mpm1 clk_out net10 vdd vdd g45p1svt L=45e-9 W=1.92e-6 AD=268.8e-15 AS=268.8e-15 PD=4.12e-6 PS=4.12e-6 NRD=72.9167e-3 NRS=72.9167e-3 M=1
+mpm0 net10 CK vdd vdd g45p1svt L=45e-9 W=480e-9 AD=67.2e-15 AS=67.2e-15 PD=1.24e-6 PS=1.24e-6 NRD=291.667e-3 NRS=291.667e-3 M=1
+
+vX3 x3 0 PWL(0 0 'input_delay+0*trf_ip_reset+0*input_pw' 0 'input_delay+1*trf_ip_reset+0*input_pw' 1.1 'input_delay+1*trf_ip_reset+1*input_pw' 1.1 'input_delay+2*trf_ip_reset+1*input_pw' 0 'input_delay+2*trf_ip_reset+2*input_pw' 0 'input_delay+3*trf_ip_reset+2*input_pw' 1.1 'input_delay+3*trf_ip_reset+3*input_pw' 1.1  'input_delay+4*trf_ip_reset+3*input_pw' 0 'input_delay+4*trf_ip_reset+4*input_pw' 0 sim_end 0)
+vX2 x2 0 PWL(0 0 'input_delay+0*trf_ip_reset+0*input_pw' 0 'input_delay+1*trf_ip_reset+0*input_pw' 1.1 'input_delay+1*trf_ip_reset+1*input_pw' 1.1 'input_delay+2*trf_ip_reset+1*input_pw' 1.1 'input_delay+2*trf_ip_reset+2*input_pw' 1.1 'input_delay+3*trf_ip_reset+2*input_pw' 1.1 'input_delay+3*trf_ip_reset+3*input_pw' 1.1  'input_delay+4*trf_ip_reset+3*input_pw' 0 'input_delay+4*trf_ip_reset+4*input_pw' 0 sim_end 0)
+vX1 x1 0 PWL(0 0 'input_delay+0*trf_ip_reset+0*input_pw' 0 'input_delay+1*trf_ip_reset+0*input_pw' 0 'input_delay+1*trf_ip_reset+1*input_pw' 0 'input_delay+2*trf_ip_reset+1*input_pw' 1.1 'input_delay+2*trf_ip_reset+2*input_pw' 1.1 'input_delay+3*trf_ip_reset+2*input_pw' 0 'input_delay+3*trf_ip_reset+3*input_pw' 0  'input_delay+4*trf_ip_reset+3*input_pw' 0 'input_delay+4*trf_ip_reset+4*input_pw' 0 sim_end 0)
+vX0 x0 0 PWL(0 0 'input_delay+0*trf_ip_reset+0*input_pw' 0 'input_delay+1*trf_ip_reset+0*input_pw' 1.1 'input_delay+1*trf_ip_reset+1*input_pw' 1.1 'input_delay+2*trf_ip_reset+1*input_pw' 0 'input_delay+2*trf_ip_reset+2*input_pw' 0 'input_delay+3*trf_ip_reset+2*input_pw' 0 'input_delay+3*trf_ip_reset+3*input_pw' 0  'input_delay+4*trf_ip_reset+3*input_pw' 1.1 'input_delay+4*trf_ip_reset+4*input_pw' 1.1 sim_end 1.1)
+vY3 y3 0 PWL(0 0 'input_delay+0*trf_ip_reset+0*input_pw' 0 'input_delay+1*trf_ip_reset+0*input_pw' 0 'input_delay+1*trf_ip_reset+1*input_pw' 0 'input_delay+2*trf_ip_reset+1*input_pw' 0 'input_delay+2*trf_ip_reset+2*input_pw' 0 'input_delay+3*trf_ip_reset+2*input_pw' 1.1 'input_delay+3*trf_ip_reset+3*input_pw' 1.1  'input_delay+4*trf_ip_reset+3*input_pw' 1.1 'input_delay+4*trf_ip_reset+4*input_pw' 1.1 sim_end 1.1)
+vY2 y2 0 PWL(0 0 'input_delay+0*trf_ip_reset+0*input_pw' 0 'input_delay+1*trf_ip_reset+0*input_pw' 1.1 sim_end 1.1)
+vY1 y1 0 PWL(0 0 'input_delay+0*trf_ip_reset+0*input_pw' 0 'input_delay+1*trf_ip_reset+0*input_pw' 1.1 'input_delay+1*trf_ip_reset+1*input_pw' 1.1 'input_delay+2*trf_ip_reset+1*input_pw' 1.1 'input_delay+2*trf_ip_reset+2*input_pw' 1.1 'input_delay+3*trf_ip_reset+2*input_pw' 0 'input_delay+3*trf_ip_reset+3*input_pw' 0 'input_delay+4*trf_ip_reset+3*input_pw' 0 'input_delay+4*trf_ip_reset+4*input_pw' 0 sim_end 0)
+vY0 y0 0 PWL(0 0 sim_end 0)
+
+vCK CK 0 pulse(0 1.1 trf_ck trf_ck trf_ck CK_pw TCK)
+vReset reset 0 PWL(0 1.1 reset_delay 1.1 'reset_delay+trf_ip_reset' 1.1 'reset_delay+reset_pw+trf_ip_reset' 1.1 'reset_delay+reset_pw+2*trf_ip_reset' 0 'reset_delay+reset_pw+2*trf_ip_reset+reset_delay2' 0 'reset_delay+reset_pw+3*trf_ip_reset+reset_delay2' 1.1 'reset_delay+reset_pw+reset_pw2+3*trf_ip_reset+reset_delay2' 1.1 'reset_delay+reset_pw+reset_pw2+4*trf_ip_reset+reset_delay2' 0 sim_end 0)
+
+$SHIFT
+.subckt c2mos_pos_reg_reset clk clk_bar d q reset vdd vss
+mnm4 q reset vss vss g45n1svt L=45e-9 W=480e-9 AD=67.2e-15 AS=67.2e-15 PD=1.24e-6 PS=1.24e-6 NRD=291.667e-3 NRS=291.667e-3 M=1
+mnm2 q clk net25 vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
+mnm0 net22 clk_bar net23 vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
+mnm3 net25 net22 vss vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
+mnm1 net23 d vss vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
+mpm3 net21 d vdd vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
+mpm1 net24 net22 vdd vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
+mpm2 net22 clk net21 vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
+mpm0 q clk_bar net24 vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
+.ends c2mos_pos_reg_reset
+
+.subckt MUX2 in0 in1 out s vdd vss
+mnm5 in1 s out vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
+mnm3 net4 s vss vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
+mnm6 in0 net4 out vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
+mpm5 out net4 in1 vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
+mpm3 net4 s vdd vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
+mpm4 out s in0 vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
+.ends MUX2
+
+.subckt PISO_4bit clk clk_bar out r0 r1 r2 reset s vdd vss
+xi3 clk clk_bar net7 out reset vdd vss c2mos_pos_reg_reset
+xi2 clk clk_bar net5 net6 reset vdd vss c2mos_pos_reg_reset
+xi1 clk clk_bar net3 net4 reset vdd vss c2mos_pos_reg_reset
+xi11 r0 net6 net7 s vdd vss MUX2
+xi9 r2 vdd net3 s vdd vss MUX2
+xi10 r1 net4 net5 s vdd vss MUX2
+.ends PISO_4bit
+
+.subckt OR2 a b out vdd vss
+mnm2 out net1 vss vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
+mnm1 net1 b vss vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
+mnm0 net1 a vss vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
+mpm2 out net1 vdd vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
+mpm1 net2 a vdd vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
+mpm0 net1 b net2 vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
+.ends OR2
+
+.subckt inv_n120 d q vdd vss
+mpm0 q d vdd vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
+mnm0 q d vss vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
+.ends inv_n120
+
+.subckt c2mos_pos_reg clk clk_bar d q vdd vss
+mnm3 net5 net2 vss vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
+mnm2 q clk net5 vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
+mnm1 net1 d vss vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
+mnm0 net2 clk_bar net1 vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=520e-9 PS=520e-9 NRD=1.16667 NRS=1.16667 M=1
+mpm3 net4 d vdd vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
+mpm2 net2 clk net4 vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
+mpm1 net3 net2 vdd vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
+mpm0 q clk_bar net3 vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=760e-9 PS=760e-9 NRD=583.333e-3 NRS=583.333e-3 M=1
+.ends c2mos_pos_reg
+
+.subckt SHIFT_AND_CLK_DIVIDER clk clk4 s vdd vss
+xi6 clk4 net13 s vdd vss OR2
+xi3 clk4 net11 vdd vss inv_n120
+xi2 net13 net9 vdd vss inv_n120
+xi4 net13 net12 vdd vss inv_n120
+xi5 clk net10 vdd vss inv_n120
+xi1 net13 net12 net11 clk4 vdd vss c2mos_pos_reg
+xi0 clk net10 net9 net13 vdd vss c2mos_pos_reg
+.ends SHIFT_AND_CLK_DIVIDER
+
+xi0 clk_out piso_net2 piso_out r0 r1 r2 vss piso_net1 vdd vss PISO_4bit
+xi1 clk_out clk4 piso_net1 vdd vss SHIFT_AND_CLK_DIVIDER
+xi2 clk_out piso_net2 vdd vss inv_n120
+
+$rest parts
+c1 vdd vss 15.0021e-15
+c2 piso_out vss 1.45992e-15
+c3 vddio vss 80.0859e-15
+c4 chipdriverout vss 91.0963e-15
+c5 net1 vss 1.89628e-15
+c6 net3 vss 3.63978e-15
+c7 net4 vss 25.0655e-15
+c8 net2 vss 1.10886e-15
+c9 i8__net1 vss 79.9313e-15
+c10 i6__outinv vss 1.15193e-15
+c11 i9__net1 vss 9.35839e-15
+c12 i7__net1 vss 2.03708e-15
+mi8__m1_96__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_95__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_94__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_93__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_92__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_91__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.44e-12 AS=1.44e-12 PD=19.55e-6 PS=19.55e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_90__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_89__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_88__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_87__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_86__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_85__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_84__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_83__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_82__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_81__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_80__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_79__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_78__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_77__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_76__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_75__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_74__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_73__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_72__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_71__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_70__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_69__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_68__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_67__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_66__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_65__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_64__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_63__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_62__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_61__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_60__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_59__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_58__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_57__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_56__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_55__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_54__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_53__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_52__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_51__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_50__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_49__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_48__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_47__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_46__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_45__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_44__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_43__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_42__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_41__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_40__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_39__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_38__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_37__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_36__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_35__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_34__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_33__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_32__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_31__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_30__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_29__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_28__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_27__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_26__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_25__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_24__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_23__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_22__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_21__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_20__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_19__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_18__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_17__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_16__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_15__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_14__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_13__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_12__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_11__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_10__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_9__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_8__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_7__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_6__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_5__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_4__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_3__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_2__rcx chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1_1__rcx vddio i8__net1 chipdriverout vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m1 chipdriverout i8__net1 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.55e-6 PS=19.55e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_27__rcx vddio net4 i8__net1 vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_26__rcx i8__net1 net4 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_25__rcx vddio net4 i8__net1 vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_24__rcx i8__net1 net4 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_23__rcx vddio net4 i8__net1 vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_22__rcx i8__net1 net4 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_21__rcx vddio net4 i8__net1 vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.44e-12 AS=1.44e-12 PD=19.55e-6 PS=19.55e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_20__rcx i8__net1 net4 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_19__rcx vddio net4 i8__net1 vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_18__rcx i8__net1 net4 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_17__rcx vddio net4 i8__net1 vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_16__rcx i8__net1 net4 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_15__rcx vddio net4 i8__net1 vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_14__rcx i8__net1 net4 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_13__rcx vddio net4 i8__net1 vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_12__rcx i8__net1 net4 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_11__rcx vddio net4 i8__net1 vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_10__rcx i8__net1 net4 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_9__rcx vddio net4 i8__net1 vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_8__rcx i8__net1 net4 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_7__rcx vddio net4 i8__net1 vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_6__rcx i8__net1 net4 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.55e-6 PS=19.55e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_5__rcx vddio net4 i8__net1 vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_4__rcx i8__net1 net4 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_3__rcx vddio net4 i8__net1 vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_2__rcx i8__net1 net4 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0_1__rcx vddio net4 i8__net1 vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m0 i8__net1 net4 vddio vddio g45p2svt L=150e-9 W=9.6e-6 AD=1.92e-12 AS=1.92e-12 PD=19.6e-6 PS=19.6e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi6__m3_1__rcx vddio i6__outinv net1 vddio g45p2svt L=150e-9 W=320e-9 AD=48e-15 AS=48e-15 PD=990e-9 PS=990e-9 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi6__m2_1__rcx i6__outinv net1 vddio vddio g45p2svt L=150e-9 W=320e-9 AD=64e-15 AS=64e-15 PD=990e-9 PS=990e-9 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi6__m2 vddio net1 i6__outinv vddio g45p2svt L=150e-9 W=320e-9 AD=48e-15 AS=48e-15 PD=990e-9 PS=990e-9 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi6__m3 net1 i6__outinv vddio vddio g45p2svt L=150e-9 W=320e-9 AD=64e-15 AS=64e-15 PD=990e-9 PS=990e-9 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m3_20__rcx net4 i9__net1 vddio vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.08e-6 PS=8.08e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m3_19__rcx vddio i9__net1 net4 vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.08e-6 PS=8.08e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m3_18__rcx net4 i9__net1 vddio vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.08e-6 PS=8.08e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m3_17__rcx vddio i9__net1 net4 vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.08e-6 PS=8.08e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m3_16__rcx net4 i9__net1 vddio vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.08e-6 PS=8.08e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m3_15__rcx vddio i9__net1 net4 vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.08e-6 PS=8.08e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m3_14__rcx net4 i9__net1 vddio vddio g45p2svt L=150e-9 W=3.84e-6 AD=576e-15 AS=576e-15 PD=8.03e-6 PS=8.03e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m3_13__rcx vddio i9__net1 net4 vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.08e-6 PS=8.08e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m3_12__rcx net4 i9__net1 vddio vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.08e-6 PS=8.08e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m3_11__rcx vddio i9__net1 net4 vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.08e-6 PS=8.08e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m3_10__rcx net4 i9__net1 vddio vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.08e-6 PS=8.08e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m3_9__rcx vddio i9__net1 net4 vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.08e-6 PS=8.08e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m3_8__rcx net4 i9__net1 vddio vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.08e-6 PS=8.08e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m3_7__rcx vddio i9__net1 net4 vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.08e-6 PS=8.08e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m3_6__rcx net4 i9__net1 vddio vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.08e-6 PS=8.08e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m3_5__rcx net4 i9__net1 vddio vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.03e-6 PS=8.03e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m3_4__rcx vddio i9__net1 net4 vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.08e-6 PS=8.08e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m3_3__rcx net4 i9__net1 vddio vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.08e-6 PS=8.08e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m3_2__rcx vddio i9__net1 net4 vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.08e-6 PS=8.08e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m3_1__rcx net4 i9__net1 vddio vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.08e-6 PS=8.08e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m3 vddio i9__net1 net4 vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.08e-6 PS=8.08e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m2_5__rcx i9__net1 net3 vddio vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.03e-6 PS=8.03e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m2_4__rcx vddio net3 i9__net1 vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.08e-6 PS=8.08e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m2_3__rcx i9__net1 net3 vddio vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.08e-6 PS=8.08e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m2_2__rcx vddio net3 i9__net1 vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.08e-6 PS=8.08e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m2_1__rcx i9__net1 net3 vddio vddio g45p2svt L=150e-9 W=3.84e-6 AD=768e-15 AS=768e-15 PD=8.08e-6 PS=8.08e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m2 vddio net3 i9__net1 vddio g45p2svt L=150e-9 W=3.84e-6 AD=576e-15 AS=576e-15 PD=8.03e-6 PS=8.03e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi7__m1_1__rcx i7__net1 net1 vddio vddio g45p2svt L=150e-9 W=960e-9 AD=192e-15 AS=192e-15 PD=2.27e-6 PS=2.27e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi7__m1 vddio net1 i7__net1 vddio g45p2svt L=150e-9 W=960e-9 AD=144e-15 AS=144e-15 PD=2.27e-6 PS=2.27e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi7__m0_6__rcx net3 i7__net1 vddio vddio g45p2svt L=150e-9 W=960e-9 AD=192e-15 AS=192e-15 PD=2.27e-6 PS=2.27e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi7__m0_5__rcx vddio i7__net1 net3 vddio g45p2svt L=150e-9 W=960e-9 AD=192e-15 AS=192e-15 PD=2.32e-6 PS=2.32e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi7__m0_4__rcx net3 i7__net1 vddio vddio g45p2svt L=150e-9 W=960e-9 AD=192e-15 AS=192e-15 PD=2.32e-6 PS=2.32e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi7__m0_3__rcx vddio i7__net1 net3 vddio g45p2svt L=150e-9 W=960e-9 AD=192e-15 AS=192e-15 PD=2.32e-6 PS=2.32e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi7__m0_2__rcx net3 i7__net1 vddio vddio g45p2svt L=150e-9 W=960e-9 AD=192e-15 AS=192e-15 PD=2.32e-6 PS=2.32e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi7__m0_1__rcx vddio i7__net1 net3 vddio g45p2svt L=150e-9 W=960e-9 AD=192e-15 AS=192e-15 PD=2.32e-6 PS=2.32e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi7__m0 net3 i7__net1 vddio vddio g45p2svt L=150e-9 W=960e-9 AD=144e-15 AS=144e-15 PD=2.27e-6 PS=2.27e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi5__pm0_3__rcx net2 piso_out vdd vdd g45p1svt L=45e-9 W=240e-9 AD=38.4e-15 AS=38.4e-15 PD=800e-9 PS=800e-9 NRD=1.16667 NRS=1.16667 M=1
+mi5__pm0_2__rcx vdd piso_out net2 vdd g45p1svt L=45e-9 W=240e-9 AD=33.6e-15 AS=33.6e-15 PD=780e-9 PS=780e-9 NRD=1.16667 NRS=1.16667 M=1
+mi5__pm0_1__rcx net2 piso_out vdd vdd g45p1svt L=45e-9 W=240e-9 AD=38.4e-15 AS=38.4e-15 PD=780e-9 PS=780e-9 NRD=1.16667 NRS=1.16667 M=1
+mi5__pm0 vdd  piso_out net2 vdd g45p1svt L=45e-9 W=240e-9 AD=38.4e-15 AS=38.4e-15 PD=800e-9 PS=800e-9 NRD=1.16667 NRS=1.16667 M=1
+mi8__m3_96__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_95__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_94__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_93__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_92__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_91__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=960e-15 AS=960e-15 PD=13.15e-6 PS=13.15e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_90__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_89__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_88__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_87__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_86__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_85__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_84__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_83__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_82__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_81__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_80__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_79__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_78__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_77__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_76__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_75__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_74__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_73__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_72__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_71__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_70__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_69__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_68__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_67__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_66__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_65__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_64__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_63__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_62__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_61__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_60__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_59__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_58__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_57__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_56__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_55__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_54__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_53__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_52__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_51__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_50__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_49__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_48__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_47__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_46__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_45__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_44__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_43__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_42__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_41__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_40__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_39__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_38__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_37__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_36__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_35__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_34__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_33__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_32__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_31__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_30__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_29__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_28__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_27__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_26__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_25__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_24__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_23__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_22__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_21__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_20__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_19__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_18__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_17__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_16__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_15__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_14__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_13__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_12__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_11__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_10__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_9__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_8__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_7__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_6__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_5__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_4__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_3__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_2__rcx chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3_1__rcx vss i8__net1 chipdriverout vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m3 chipdriverout i8__net1 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.15e-6 PS=13.15e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_27__rcx vss net4 i8__net1 vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_26__rcx i8__net1 net4 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_25__rcx vss net4 i8__net1 vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_24__rcx i8__net1 net4 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_23__rcx vss net4 i8__net1 vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_22__rcx i8__net1 net4 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_21__rcx vss net4 i8__net1 vss g45n2svt L=150e-9 W=6.4e-6 AD=960e-15 AS=960e-15 PD=13.15e-6 PS=13.15e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_20__rcx i8__net1 net4 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_19__rcx vss net4 i8__net1 vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_18__rcx i8__net1 net4 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_17__rcx vss net4 i8__net1 vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_16__rcx i8__net1 net4 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_15__rcx vss net4 i8__net1 vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_14__rcx i8__net1 net4 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_13__rcx vss net4 i8__net1 vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_12__rcx i8__net1 net4 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_11__rcx vss net4 i8__net1 vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_10__rcx i8__net1 net4 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_9__rcx vss net4 i8__net1 vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_8__rcx i8__net1 net4 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_7__rcx vss net4 i8__net1 vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_6__rcx i8__net1 net4 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.15e-6 PS=13.15e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_5__rcx vss net4 i8__net1 vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_4__rcx i8__net1 net4 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_3__rcx vss net4 i8__net1 vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_2__rcx i8__net1 net4 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2_1__rcx vss net4 i8__net1 vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi8__m2 i8__net1 net4 vss vss g45n2svt L=150e-9 W=6.4e-6 AD=1.28e-12 AS=1.28e-12 PD=13.2e-6 PS=13.2e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi6__m0_2__rcx net1 net2 vss vss g45n2svt L=150e-9 W=640e-9 AD=96e-15 AS=96e-15 PD=1.63e-6 PS=1.63e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi6__m1_2__rcx i6__outinv piso_out vss vss g45n2svt L=150e-9 W=640e-9 AD=128e-15 AS=128e-15 PD=1.63e-6 PS=1.63e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi6__m1_1__rcx vss piso_out i6__outinv vss g45n2svt L=150e-9 W=640e-9 AD=128e-15 AS=128e-15 PD=1.68e-6 PS=1.68e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi6__m1 i6__outinv piso_out vss vss g45n2svt L=150e-9 W=640e-9 AD=96e-15 AS=96e-15 PD=1.63e-6 PS=1.63e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi6__m0_1__rcx vss net2 net1 vss g45n2svt L=150e-9 W=640e-9 AD=128e-15 AS=128e-15 PD=1.68e-6 PS=1.68e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi6__m0 net1 net2 vss vss g45n2svt L=150e-9 W=640e-9 AD=128e-15 AS=128e-15 PD=1.63e-6 PS=1.63e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m1_20__rcx net4 i9__net1 vss vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.52e-6 PS=5.52e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m1_19__rcx vss i9__net1 net4 vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.52e-6 PS=5.52e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m1_18__rcx net4 i9__net1 vss vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.52e-6 PS=5.52e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m1_17__rcx vss i9__net1 net4 vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.52e-6 PS=5.52e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m1_16__rcx net4 i9__net1 vss vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.52e-6 PS=5.52e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m1_15__rcx vss i9__net1 net4 vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.52e-6 PS=5.52e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m1_14__rcx net4 i9__net1 vss vss g45n2svt L=150e-9 W=2.56e-6 AD=384e-15 AS=384e-15 PD=5.47e-6 PS=5.47e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m1_13__rcx vss i9__net1 net4 vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.52e-6 PS=5.52e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m1_12__rcx net4 i9__net1 vss vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.52e-6 PS=5.52e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m1_11__rcx vss i9__net1 net4 vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.52e-6 PS=5.52e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m1_10__rcx net4 i9__net1 vss vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.52e-6 PS=5.52e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m1_9__rcx vss i9__net1 net4 vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.52e-6 PS=5.52e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m1_8__rcx net4 i9__net1 vss vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.52e-6 PS=5.52e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m1_7__rcx vss i9__net1 net4 vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.52e-6 PS=5.52e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m1_6__rcx net4 i9__net1 vss vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.52e-6 PS=5.52e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m1_5__rcx net4 i9__net1 vss vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.47e-6 PS=5.47e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m1_4__rcx vss i9__net1 net4 vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.52e-6 PS=5.52e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m1_3__rcx net4 i9__net1 vss vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.52e-6 PS=5.52e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m1_2__rcx vss i9__net1 net4 vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.52e-6 PS=5.52e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m1_1__rcx net4 i9__net1 vss vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.52e-6 PS=5.52e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m1 vss i9__net1 net4 vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.52e-6 PS=5.52e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m0_5__rcx i9__net1 net3 vss vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.47e-6 PS=5.47e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m0_4__rcx vss net3 i9__net1 vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.52e-6 PS=5.52e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m0_3__rcx i9__net1 net3 vss vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.52e-6 PS=5.52e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m0_2__rcx vss net3 i9__net1 vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.52e-6 PS=5.52e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m0_1__rcx i9__net1 net3 vss vss g45n2svt L=150e-9 W=2.56e-6 AD=512e-15 AS=512e-15 PD=5.52e-6 PS=5.52e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi9__m0 vss net3 i9__net1 vss g45n2svt L=150e-9 W=2.56e-6 AD=384e-15 AS=384e-15 PD=5.47e-6 PS=5.47e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi7__m2_1__rcx i7__net1 net1 vss vss g45n2svt L=150e-9 W=640e-9 AD=128e-15 AS=128e-15 PD=1.63e-6 PS=1.63e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi7__m2 vss net1 i7__net1 vss g45n2svt L=150e-9 W=640e-9 AD=96e-15 AS=96e-15 PD=1.63e-6 PS=1.63e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi7__m3_6__rcx net3 i7__net1 vss vss g45n2svt L=150e-9 W=640e-9 AD=128e-15 AS=128e-15 PD=1.63e-6 PS=1.63e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi7__m3_5__rcx vss i7__net1 net3 vss g45n2svt L=150e-9 W=640e-9 AD=128e-15 AS=128e-15 PD=1.68e-6 PS=1.68e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi7__m3_4__rcx net3 i7__net1 vss vss g45n2svt L=150e-9 W=640e-9 AD=128e-15 AS=128e-15 PD=1.68e-6 PS=1.68e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi7__m3_3__rcx vss i7__net1 net3 vss g45n2svt L=150e-9 W=640e-9 AD=128e-15 AS=128e-15 PD=1.68e-6 PS=1.68e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi7__m3_2__rcx net3 i7__net1 vss vss g45n2svt L=150e-9 W=640e-9 AD=128e-15 AS=128e-15 PD=1.68e-6 PS=1.68e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi7__m3_1__rcx vss i7__net1 net3 vss g45n2svt L=150e-9 W=640e-9 AD=128e-15 AS=128e-15 PD=1.68e-6 PS=1.68e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi7__m3 net3 i7__net1 vss vss g45n2svt L=150e-9 W=640e-9 AD=96e-15 AS=96e-15 PD=1.63e-6 PS=1.63e-6 NRD=468.75e-3 NRS=468.75e-3 M=1
+mi5__nm0_3__rcx net2 piso_out vss vss g45n1svt L=45e-9 W=120e-9 AD=19.2e-15 AS=19.2e-15 PD=560e-9 PS=560e-9 NRD=1.16667 NRS=1.16667 M=1
+mi5__nm0_2__rcx vss piso_out net2 vss g45n1svt L=45e-9 W=120e-9 AD=16.8e-15 AS=16.8e-15 PD=540e-9 PS=540e-9 NRD=1.16667 NRS=1.16667 M=1
+mi5__nm0_1__rcx net2 piso_out vss vss g45n1svt L=45e-9 W=120e-9 AD=19.2e-15 AS=19.2e-15 PD=540e-9 PS=540e-9 NRD=1.16667 NRS=1.16667 M=1
+mi5__nm0 vss piso_out net2 vss g45n1svt L=45e-9 W=120e-9 AD=19.2e-15 AS=19.2e-15 PD=560e-9 PS=560e-9 NRD=1.16667 NRS=1.16667 M=1
+
+cext vss chipdriverout 10pF
+
+vvss vss 0 0 
+vvdd vdd 0 1.1
+vvddio vddio 0 1.8
+vr2 r2 0 1.1
+vr1 r1 0 0
+vr0 r0 0 0
+
+.tran 0 6n
+.option post
+.END
