@@ -19,12 +19,12 @@ filter_res \
 	 -merge_parallel_res false \
 	 -min_res 0.001
 input_db -type assura \
-	 -design_cell_name "Adder_Comp layout final_project" \
-	 -directory_name "/home/ananya15/ece482.work/gpdk045" \
+	 -design_cell_name "Adder_Comp_new layout final_project" \
+	 -directory_name "/home/kadinas2/ece482.work/gpdk045/LVS" \
 	 -format "DFII" \
-	 -run_name "Adder_Comp"
+	 -run_name "Adder_Comp_new"
 log_file \
-	 -file_name "/home/ananya15/ece482.work/gpdk045/qrc.Adder_Comp.log"
+	 -file_name "/home/kadinas2/ece482.work/gpdk045/LVS/qrc.Adder_Comp_new.log"
 output_db -type extracted_view \
 	 -cap_component "pcapacitor" \
 	 -cap_property_name "c" \
@@ -37,11 +37,11 @@ output_db -type extracted_view \
 	 -res_property_name "r" \
 	 -view_name "av_extracted"
 output_setup \
-	 -directory_name "/home/ananya15/ece482.work/gpdk045" \
-	 -temporary_directory_name "Adder_Comp"
+	 -directory_name "/home/kadinas2/ece482.work/gpdk045/LVS" \
+	 -temporary_directory_name "Adder_Comp_new"
 process_technology \
 	 -technology_directory \
-		"/class/ece482/gpdk045_v_5_0/qrc/typical" \
+		"/class/ece482/gpdk045_v_5_0/assura/../qrc/typical" \
 	 -temperature \
 		25.0
 
