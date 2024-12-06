@@ -1,0 +1,52 @@
+* "simulator" "PrimeSim HSPICE"
+* "version" "T-2022.06-SP1 linux64"
+* "format" "HSP"
+* "rundate" "17:32:12 12/02/2024 "
+* "netlist" "draft.cir "
+* "runtitle" "** generated for: hspiced"
+* time =  0.000e+00       
+* temperature =  2.500e+01       
+*** BEGIN: Saved Operating Point ***                     
+.option 
++ gmindc= 1.000e-12       
+.nodeset
++ ck = 0.000e+00       
++ r0 = 3.526e-07       
++ r1 = 1.788e-07       
++ r2 = 3.504e-08       
++ vdd = 1.100e+00       
++ vss = 0.000e+00       
++ x0 = 0.000e+00       
++ x1 = 0.000e+00       
++ x2 = 0.000e+00       
++ x3 = 0.000e+00       
++ y0 = 0.000e+00       
++ y1 = 0.000e+00       
++ y2 = 0.000e+00       
++ y3 = 0.000e+00       
++ xi0.net1 = 1.950e-07       
++ xi0.net10 = 8.490e-08       
++ xi0.net2 = 9.435e-08       
++ xi0.net3 = 1.718e-07       
++ xi0.net4 = 9.435e-08       
++ xi0.net5 = 3.125e-07       
++ xi0.net6 = 2.661e-07       
++ xi0.net8 = 2.897e-07       
++ xi0.net9 = 1.387e-07       
++ xi0.xi3.net1 = 1.100e+00       
++ xi0.xi2.net1 = 1.100e+00       
++ xi0.xi1.net1 = 1.100e+00       
++ xi0.xi0.net1 = 1.100e+00       
++ xi0.xi6.net1 = 1.100e+00       
++ xi0.xi5.net1 = 1.100e+00       
++ xi0.xi4.net1 = 1.100e+00       
++ xi0.xi7.net1 = 4.817e-07       
++ xi0.xi7.net2 = 1.100e+00       
++ xi0.xi7.net3 = 1.100e+00       
++ xi0.xi7.xi1.net1 = 1.100e+00       
++ xi0.xi7.xi0.net1 = 1.100e+00       
++ xi0.xi7.xi4.net1 = 4.226e-02       
++ xi0.xi7.xi4.net2 = 1.100e+00       
++ xi0.xi7.xi4.net3 = 1.100e+00       
++ xi0.xi7.xi4.net4 = 9.495e-01       
+***   END: Saved Operating Point ***                     
