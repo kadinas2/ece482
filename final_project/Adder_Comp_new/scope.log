@@ -1,0 +1,221 @@
+wm geometry .sigmgr 467x236+656+329
+wm geometry .sigmgr 467x236+1035+148
+ScopeSigMgr:loadpffile /home/ananya15/ece482.work/gpdk045/final_project/Adder_Comp/draft.tr0 1 openonly
+# PF:1
+wm geometry .sigmgr._PF:1 290x358+756+399
+pf:read PF:1 v(x0)
+# WF:1:1
+Graph addsignal WF:1:1 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal0
+pf:read PF:1 v(x1)
+# WF:1:2
+Graph addsignal WF:1:2 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal1
+pf:read PF:1 v(x2)
+# WF:1:3
+Graph addsignal WF:1:3 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal2
+pf:read PF:1 v(x3)
+# WF:1:4
+Graph addsignal WF:1:4 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal3
+Graph:DSel
+Graph itemselect AxisY(2,0) add
+# AxisY(2,0)
+Graph:Select Graph0
+Graph:DSel
+Graph itemselect Signal2 add
+# Signal2
+Graph sigconfig Signal2 -region 3 -rgnindex 1
+Graph:DSel
+Graph itemselect Signal1 add
+# Signal1
+Graph sigconfig Signal1 -region 2 -rgnindex 2
+Graph:DSel
+Graph itemselect Signal0 add
+# Signal0
+Graph sigconfig Signal0 -region 1 -rgnindex 3
+Graph:DSel
+pf:read PF:1 v(y0)
+# WF:1:5
+Graph addsignal WF:1:5 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal4
+pf:read PF:1 v(y1)
+# WF:1:6
+Graph addsignal WF:1:6 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal5
+pf:read PF:1 v(y2)
+# WF:1:7
+Graph addsignal WF:1:7 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal6
+pf:read PF:1 v(y3)
+# WF:1:8
+Graph addsignal WF:1:8 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal7
+Graph:Select Graph0
+Graph:DSel
+Graph itemselect Signal6 add
+# Signal6
+Graph sigconfig Signal6 -region 4 -rgnindex 1
+Graph:DSel
+Graph itemselect Signal5 add
+# Signal5
+Graph sigconfig Signal5 -region 3 -rgnindex 2
+Graph:DSel
+Graph itemselect Signal4 add
+# Signal4
+Graph sigconfig Signal4 -region 2 -rgnindex 3
+Mdi:FullSize
+Graph:DSel
+pf:read PF:1 v(r0)
+# WF:1:9
+Graph addsignal WF:1:9 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal8
+pf:read PF:1 v(r1)
+# WF:1:10
+Graph addsignal WF:1:10 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal9
+pf:read PF:1 v(r2)
+# WF:1:11
+Graph addsignal WF:1:11 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal10
+Graph:Select Graph0
+Graph:DSel
+Graph itemselect Signal9 add
+# Signal9
+Graph sigconfig Signal9 -region 4 -rgnindex 1
+Graph:DSel
+Graph itemselect Signal8 add
+# Signal8
+Graph sigconfig Signal8 -region 3 -rgnindex 2
+Graph:DSel
+pf:read PF:1 v(ck)
+# WF:1:12
+Graph addsignal WF:1:12 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal11
+Graph:Select Graph0
+Graph:DSel
+Graph itemselect Signal11 add
+# Signal11
+Graph itemselect Signal11 add
+# Signal11
+ScopeSigMgr:Unload 0 {{(1) draft.tr0}}
+wm geometry .sigmgr._PF:1 290x358+756+366
+Graph itemselect Signal11 add
+# Signal11
+Graph itemselect Signal11 add
+# Signal11
+Graph:DSel
+Graph:DSel
+Graph:DSel
+Graph itemselect Signal11 add
+# Signal11
+wm geometry .sigmgr 467x236+1025+140
+wm geometry .sigmgr 467x236+1035+148
+Graph itemselect Signal11 add
+# Signal11
+Graph sigconfig Signal11 -region 3 -rgnindex 1
+Graph itemselect Signal11 add
+# Signal11
+Graph sigconfig {Signal11 Signal9 Signal8} -region {2 2 2} -rgnindex {1 2 3}
+Graph:DSel
+Graph axisconfig {AxisX(0) AxisY(0,0) AxisY(1,0) AxisY(2,0)} -range {{-11n 33n } {-0.71875 1.90625 } {-0.71875 1.90625 } {-1.5 2.5 }}
+Graph axisconfig {AxisX(0) AxisY(0,0) AxisY(1,0) AxisY(2,0)} -range {all all all all} -zoomed {0 0 0 0}
+Graph:DSel
+Graph itemselect AxisX(0) add
+# AxisX(0)
+GrXY:NewGraph
+# Graph1
+Mdi:Resize 1015 528
+Mdi:Move 5 5
+wm geometry .sigmgr 467x236+1025+140
+wm geometry .sigmgr._PF:1 290x358+746+358
+pf:read PF:1 v(r0)
+# WF:1:9
+Graph addsignal WF:1:9 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal0
+pf:read PF:1 v(x0)
+# WF:1:1
+Graph addsignal WF:1:1 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal1
+pf:read PF:1 v(x1)
+# WF:1:2
+Graph addsignal WF:1:2 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal2
+pf:read PF:1 v(x2)
+# WF:1:3
+Graph addsignal WF:1:3 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal3
+pf:read PF:1 v(x3)
+# WF:1:4
+Graph addsignal WF:1:4 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal4
+pf:read PF:1 v(y0)
+# WF:1:5
+Graph addsignal WF:1:5 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal5
+wm geometry .sigmgr._PF:1 290x358+750+358
+wm geometry .sigmgr._PF:1 290x358+780+358
+wm geometry .sigmgr._PF:1 290x358+844+358
+wm geometry .sigmgr._PF:1 290x358+904+358
+wm geometry .sigmgr._PF:1 290x358+912+358
+wm geometry .sigmgr._PF:1 290x358+954+358
+wm geometry .sigmgr._PF:1 290x358+991+358
+wm geometry .sigmgr._PF:1 290x358+995+358
+wm geometry .sigmgr._PF:1 290x358+1010+358
+wm geometry .sigmgr._PF:1 290x358+1015+358
+wm geometry .sigmgr._PF:1 290x358+1025+358
+wm geometry .sigmgr._PF:1 290x358+1043+358
+wm geometry .sigmgr._PF:1 290x358+1045+358
+wm geometry .sigmgr._PF:1 290x358+1046+358
+Graph:Select Graph1
+Graph:DSel
+Graph itemselect Signal4 add
+# Signal4
+Graph sigconfig Signal4 -region 3 -rgnindex 1
+Graph:DSel
+Graph itemselect Signal2 add
+# Signal2
+Graph sigconfig {Signal2 Signal3 Signal4} -region {3 3 3} -rgnindex {0 1 2}
+Graph:DSel
+Graph itemselect Signal1 add
+# Signal1
+Graph sigconfig {Signal1 Signal5} -regswap {3 4}
+Graph itemselect Signal1 add
+# Signal1
+Graph sigconfig {Signal1 Signal5} -regswap {2 4}
+Graph itemselect Signal1 add
+# Signal1
+Graph sigconfig {Signal1 Signal3 Signal4} -region {1 1 1} -rgnindex {1 2 3}
+Graph:DSel
+pf:read PF:1 v(y1)
+# WF:1:6
+Graph addsignal WF:1:6 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal6
+pf:read PF:1 v(y2)
+# WF:1:7
+Graph addsignal WF:1:7 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal7
+pf:read PF:1 v(y3)
+# WF:1:8
+Graph addsignal WF:1:8 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal8
+Graph:Select Graph1
+Graph:DSel
+Graph itemselect Signal7 add
+# Signal7
+Graph sigconfig Signal7 -region 5 -rgnindex 1
+Graph:DSel
+Graph itemselect Signal6 add
+# Signal6
+Graph sigconfig Signal6 -region 4 -rgnindex 2
+Graph:DSel
+Graph itemselect Signal5 add
+# Signal5
+Graph sigconfig Signal5 -region 3 -rgnindex 3
+Graph:DSel
+Graph:Select Graph1
+Graph:DSel
+Graph itemselect Signal5 add
+# Signal5
+Graph:DSel
