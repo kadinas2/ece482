@@ -1,0 +1,16 @@
+#
+# Edit Lock-Stake file. CAUTION: Please do not change.
+#
+# Information about current Edit Lock Owner.
+#
+LockStakeVersion               1.1
+LoginName                      kadinas2
+HostName                       fastx3-20.ews.illinois.edu
+ProcessIdentifier              858699
+ProcessCreationTime_UTC        1733735901
+ProcessCreationTime_Readable   Mon Dec  9 03:18:21 2024 CST
+AppIdentifier                  OA File System Design Manager
+OSType                         unix
+ReasonForPlacingEditLock       OpenAccess edit lock
+FilePathUsedToEditLock         /home/kadinas2/ece482.work/gpdk045/final_project/c2mos_pos_reg_v2/layout/layout.oa.cdslck
+TimeEditLocked                 Mon Dec  9 03:34:25 2024 CST
